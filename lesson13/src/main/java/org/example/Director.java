@@ -3,38 +3,17 @@ package org.example;
 import java.util.List;
 
 public class Director extends Worker {
-    public enum Position {
-        GENERAL(800),
-        DEPARTMENT(600);
-        private int coefficient;
-
-        Position(int coefficient) {
-            this.coefficient = coefficient;
-        }
-
-        public int getCoefficient() {
-            return coefficient;
-        }
-    }
-
-    private Position position;
-
 
     private List<Worker> subordinates;
 
-    public Director(String firstName, String lastName, Gender gender, int experience, Position position, List<Worker> subordinates) {
-        super(firstName, lastName, gender, experience);
-        this.position = position;
+    public Director(String firstName, String lastName, Gender gender, int experience, Position.PositionType positionType, List<Worker> subordinates) {
+        super(firstName, lastName, gender, experience, positionType);
         this.subordinates = subordinates;
     }
 
-    public Position getPosition() {
-        return position;
-    }
-
     @Override
-    public int getSalary(int coefficient) {
-        int baseSalary = super.getSalary(coefficient);
+    public int getSalary() {
+        int baseSalary = super.getSalary();
         int bonus = subordinates.size() * 100;
         return baseSalary + bonus;
     }
@@ -63,10 +42,14 @@ public class Director extends Worker {
 
     @Override
     public String toString() {
-        return super.toString() + " Director{" +
-                "position=" + position +
-                ", subordinates=" + subordinates +
-                "} ";
+        return "Director{" +
+                "subordinates=" + subordinates +
+                "} " + super.toString();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return super.compareTo(o);
     }
 }
 
