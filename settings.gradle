@@ -1,3 +1,7 @@
 rootProject.name = 'tms_lesson'
-
+include 'lesson13'
+include 'lesson17'
+include 'leson16'
+include 'lesson18'
+include 'lesson20'
 
