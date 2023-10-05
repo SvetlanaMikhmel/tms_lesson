@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="horse1" class="org.example.domain.Horse">
+        <constructor-arg value="Horse1"/>
+    </bean>
+    <bean name="horse2" class="org.example.domain.Horse">
+        <constructor-arg value="Horse2"/>
+    </bean>
+    <bean name="horse3" class="org.example.domain.Horse">
+        <constructor-arg value="Horse3"/>
+    </bean>
+
+    <bean name="rider1" class="org.example.domain.Rider">
+        <constructor-arg index="0" value="Rider1"/>
+        <constructor-arg index="1" value="20"/>
+    </bean>
+
+    <bean name="rider2" class="org.example.domain.Rider">
+        <constructor-arg index="0" value="Rider2"/>
+        <constructor-arg index="1" value="21"/>
+    </bean>
+
+    <bean name="rider3" class="org.example.domain.Rider">
+        <constructor-arg index="0" value="Rider3"/>
+        <constructor-arg index="1" value="22"/>
+    </bean>
+
+
+    <bean name="pair1" class="org.example.domain.Pair">
+        <constructor-arg name="horse" ref="horse1"/>
+        <constructor-arg name="rider" ref="rider1"/>
+    </bean>
+
+    <bean name="pair2" class="org.example.domain.Pair">
+        <constructor-arg name="horse" ref="horse2"/>
+        <constructor-arg name="rider" ref="rider2"/>
+    </bean>
+
+    <bean name="pair3" class="org.example.domain.Pair">
+        <constructor-arg name="horse" ref="horse3"/>
+        <constructor-arg name="rider" ref="rider3"/>
+    </bean>
+
+
+    <bean name="rice" class="org.example.service.RacingService" autowire="constructor"/>
+
+    <bean name="user" class="org.example.domain.User">
+    </bean>
+
+    <bean name="clientService" class="org.example.service.UserService">
+        <constructor-arg type="org.example.domain.User" ref="user"/>
+    </bean>
+
+    <bean name="game" class="org.example.service.MainService">
+        <constructor-arg type="org.example.service.RacingService" ref="rice"/>
+        <constructor-arg type="org.example.service.UserService" ref="clientService"/>
+    </bean>
+</beans>
